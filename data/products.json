@@ -1,0 +1,863 @@
+[
+  {
+    "id": "product-1",
+    "name": "Organic Strawberries",
+    "category": "fruits",
+    "price": 4.99,
+    "qualityScore": 17,
+    "qualityLevel": "poor",
+    "description": "Sweet, juicy strawberries picked fresh this morning. Perfect for desserts or snacking.",
+    "healthBenefits": [
+      "Rich in vitamin C and antioxidants to support immune health",
+      "Good source of manganese and folate",
+      "May promote heart health and healthy skin"
+    ],
+    "bestUses": [
+      "Smoothies and shakes",
+      "Breakfast bowls and oatmeal",
+      "Desserts, jams, and fresh salads"
+    ],
+    "image": "/images/products/product-1757258714970-649998732.webp",
+    "farmer": "Green Valley Farms",
+    "harvestDate": "2025-07-04",
+    "expiryDate": "2025-09-07",
+    "qualityAssessmentDate": "2025-09-07T15:26:27.238Z",
+    "stock": 5,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-10T18:37:11.048Z",
+    "inventoryMetrics": {
+      "turnoverRate": 30,
+      "lastOrderDate": "2025-08-23T16:04:19.806Z",
+      "totalOrders": 13,
+      "totalQuantityOrdered": 38,
+      "averageOrderSize": 2.923076923076923,
+      "orderActivityScore": 100,
+      "stockHealthScore": 14.000000000000002
+    }
+  },
+  {
+    "id": "product-2",
+    "name": "Heirloom Cherry Tomatoes",
+    "category": "vegetables",
+    "price": 3.99,
+    "qualityScore": 45,
+    "qualityLevel": "poor",
+    "description": "Bursting with flavor, these heirloom cherry tomatoes are perfect for salads and snacking.",
+    "healthBenefits": [
+      "High in lycopene, an antioxidant linked to heart health",
+      "Source of vitamins A and C",
+      "Low-calorie and hydrating"
+    ],
+    "bestUses": [
+      "Fresh salads and snacking",
+      "Roasting and pasta sauces",
+      "Bruschetta and salsas"
+    ],
+    "image": "https://images.unsplash.com/photo-1546094096-0df4bcaaa337?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Sunset Organics",
+    "harvestDate": "2025-07-20",
+    "expiryDate": "2025-09-03",
+    "qualityAssessmentDate": "2025-09-03T18:01:00.553Z",
+    "stock": 9,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T18:42:53.535Z",
+    "inventoryMetrics": {
+      "totalOrders": 3,
+      "totalQuantityOrdered": 4,
+      "lastOrderDate": "2025-08-23T15:27:36.971Z",
+      "averageOrderSize": 1.3333333333333333,
+      "turnoverRate": 18.181818181818183,
+      "orderActivityScore": 36.666666666666664,
+      "stockHealthScore": 18
+    }
+  },
+  {
+    "id": "product-3",
+    "name": "Mixed Salad Greens",
+    "category": "vegetables",
+    "price": 2.99,
+    "qualityScore": 67,
+    "qualityLevel": "fair",
+    "description": "A perfect blend of kale, arugula, and spinach for your healthy salads.",
+    "healthBenefits": [
+      "High in fiber for digestive health",
+      "Excellent source of vitamins A, C, and K",
+      "Contains iron and folate"
+    ],
+    "bestUses": [
+      "Salad base and wraps",
+      "Green smoothies",
+      "Toppings for bowls and sandwiches"
+    ],
+    "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Morning Dew Farm",
+    "harvestDate": "2025-07-17",
+    "expiryDate": "2025-10-15",
+    "qualityAssessmentDate": "2025-09-03T17:19:24.655Z",
+    "stock": 91,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-11T02:45:45.483Z",
+    "inventoryMetrics": {
+      "totalOrders": 2,
+      "totalQuantityOrdered": 3,
+      "lastOrderDate": "2025-08-23T15:45:02.744Z",
+      "averageOrderSize": 1.5,
+      "turnoverRate": 1.9230769230769231,
+      "orderActivityScore": 27.5,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-4",
+    "name": "Free-Range Eggs",
+    "category": "dairy",
+    "price": 5.99,
+    "qualityScore": 100,
+    "qualityLevel": "excellent",
+    "description": "Fresh eggs from happy, free-range chickens. Rich yolks and perfect for baking.",
+    "healthBenefits": [
+      "High-quality protein for muscle repair",
+      "Rich in choline for brain health",
+      "Provides vitamins A, D, B12, and minerals"
+    ],
+    "bestUses": [
+      "Breakfast dishes and omelets",
+      "Baking and pastries",
+      "Sauces like hollandaise and carbonara"
+    ],
+    "image": "/images/products/product-1753609955881-531583794.webp",
+    "farmer": "Happy Hen Farm",
+    "harvestDate": "2025-09-03",
+    "expiryDate": "2025-09-07",
+    "qualityAssessmentDate": "2025-09-03T18:46:22.391Z",
+    "stock": 2,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T18:46:22.391Z",
+    "inventoryMetrics": {
+      "turnoverRate": 15.686274509803921,
+      "lastOrderDate": "2025-08-23T15:54:32.317Z",
+      "totalOrders": 20,
+      "totalQuantityOrdered": 44,
+      "averageOrderSize": 2.2,
+      "orderActivityScore": 100,
+      "stockHealthScore": 86
+    }
+  },
+  {
+    "id": "product-5",
+    "name": "Fresh Basil",
+    "category": "vegetables",
+    "price": 2.49,
+    "qualityScore": 43,
+    "qualityLevel": "poor",
+    "description": "Aromatic fresh basil perfect for Italian dishes and pesto.",
+    "healthBenefits": [
+      "Contains antioxidants and anti-inflammatory compounds",
+      "Source of vitamin K and manganese",
+      "May support digestive comfort"
+    ],
+    "bestUses": [
+      "Pesto and pasta dishes",
+      "Caprese salads and pizza topping",
+      "Herbal teas and dressings"
+    ],
+    "image": "/images/products/product-1753598762195-465981326.jpg",
+    "farmer": "Herb Garden Co.",
+    "harvestDate": "2025-07-13",
+    "expiryDate": "2025-09-04",
+    "qualityAssessmentDate": "2025-09-03T18:49:43.351Z",
+    "stock": 27,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T18:49:43.351Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 1,
+      "lastOrderDate": "2025-08-23T15:28:11.143Z",
+      "averageOrderSize": 1,
+      "turnoverRate": 3.571428571428571,
+      "orderActivityScore": 15,
+      "stockHealthScore": 54
+    }
+  },
+  {
+    "id": "product-6",
+    "name": "Organic Honey",
+    "category": "dairy",
+    "price": 8.99,
+    "qualityScore": 75,
+    "qualityLevel": "good",
+    "description": "Pure, raw honey from local beehives. Sweet and natural.",
+    "healthBenefits": [
+      "Natural antioxidants and phytonutrients",
+      "Soothes sore throat and cough",
+      "Quick energy source"
+    ],
+    "bestUses": [
+      "Tea, yogurt, and oatmeal",
+      "Marinades and glazes",
+      "Baking and salad dressings"
+    ],
+    "image": "/images/products/product-1753598569691-554128690.webp",
+    "farmer": "Bee Happy Apiary",
+    "harvestDate": "2025-07-03",
+    "expiryDate": "2025-10-22",
+    "qualityAssessmentDate": "2025-09-03T17:21:19.559Z",
+    "stock": 86,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T17:21:19.559Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 5,
+      "lastOrderDate": "2025-08-23T15:32:57.937Z",
+      "averageOrderSize": 5,
+      "turnoverRate": 5.4945054945054945,
+      "orderActivityScore": 35,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-7",
+    "name": "Fresh Mozzarella",
+    "category": "dairy",
+    "price": 6.99,
+    "qualityScore": 5,
+    "qualityLevel": "poor",
+    "description": "Creamy, fresh mozzarella made from local cow's milk.",
+    "healthBenefits": [
+      "Good source of protein and calcium",
+      "Provides vitamin B12 for energy metabolism",
+      "Lower sodium than many aged cheeses"
+    ],
+    "bestUses": [
+      "Pizza and pasta bakes",
+      "Caprese salads",
+      "Sandwiches and paninis"
+    ],
+    "image": "/images/products/product-1753598650863-781955980.jpg",
+    "farmer": "Dairy Delights",
+    "harvestDate": "2025-07-17",
+    "expiryDate": "2025-09-08",
+    "qualityAssessmentDate": "2025-09-03T18:52:45.669Z",
+    "stock": 2,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T18:53:02.679Z",
+    "inventoryMetrics": {
+      "totalOrders": 2,
+      "totalQuantityOrdered": 8,
+      "lastOrderDate": "2025-08-23T15:57:10.473Z",
+      "averageOrderSize": 4,
+      "turnoverRate": 4.9504950495049505,
+      "orderActivityScore": 40,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-8",
+    "name": "Organic Carrots",
+    "category": "vegetables",
+    "price": 2.5,
+    "qualityScore": 53,
+    "qualityLevel": "fair",
+    "description": "Sweet and crunchy organic carrots perfect for snacking or cooking.",
+    "healthBenefits": [
+      "High in beta-carotene (vitamin A) for eye health",
+      "Supports immune function",
+      "Good source of fiber"
+    ],
+    "bestUses": [
+      "Roasting and stews",
+      "Soups and salads",
+      "Juicing and snacking"
+    ],
+    "image": "/images/products/product-1753598719083-68153421.webp",
+    "farmer": "Root Valley Farm",
+    "harvestDate": "2025-07-04",
+    "expiryDate": "2025-11-25",
+    "qualityAssessmentDate": "2025-09-03T17:19:52.292Z",
+    "stock": 100,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T17:19:52.292Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 8,
+      "lastOrderDate": "2025-08-23T15:34:31.751Z",
+      "averageOrderSize": 8,
+      "turnoverRate": 7.4074074074074066,
+      "orderActivityScore": 50,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-9",
+    "name": "Fresh Asparagus",
+    "category": "vegetables",
+    "price": 4.5,
+    "qualityScore": 57,
+    "qualityLevel": "fair",
+    "description": "Tender, fresh asparagus spears perfect for grilling or steaming.",
+    "healthBenefits": [
+      "Rich in folate and vitamin K",
+      "Prebiotic fiber supports gut health",
+      "Contains antioxidants that reduce oxidative stress"
+    ],
+    "bestUses": [
+      "Grilling and roasting",
+      "Pasta and risotto",
+      "Salads with lemon or vinaigrette"
+    ],
+    "image": "/images/products/product-1753599524119-811999582.webp",
+    "farmer": "Green Valley Farms",
+    "harvestDate": "2025-07-25",
+    "expiryDate": "2025-08-22",
+    "qualityAssessmentDate": "2025-08-23T15:34:45.669Z",
+    "stock": 7,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-08-23T15:34:45.668Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 5,
+      "lastOrderDate": "2025-08-23T15:34:45.669Z",
+      "averageOrderSize": 5,
+      "turnoverRate": 41.66666666666667,
+      "orderActivityScore": 35,
+      "stockHealthScore": 14.000000000000002
+    }
+  },
+  {
+    "id": "product-10",
+    "name": "Fresh Mushrooms",
+    "category": "vegetables",
+    "price": 3.75,
+    "qualityScore": 68,
+    "qualityLevel": "fair",
+    "description": "Fresh, locally grown mushrooms perfect for cooking.",
+    "healthBenefits": [
+      "Source of B vitamins and selenium",
+      "Low-calorie umami-rich ingredient",
+      "May support immune health"
+    ],
+    "bestUses": [
+      "Stir-fries and sautés",
+      "Soups and pasta",
+      "Omelets and pizzas"
+    ],
+    "image": "/images/products/product-1753599424353-591242903.avif",
+    "farmer": "Fungi Farm",
+    "harvestDate": "2025-07-25",
+    "expiryDate": "2025-08-07",
+    "qualityAssessmentDate": "2025-08-23T15:56:48.983Z",
+    "stock": 80,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-08-23T15:56:48.981Z",
+    "inventoryMetrics": {
+      "totalOrders": 2,
+      "totalQuantityOrdered": 10,
+      "lastOrderDate": "2025-08-23T15:56:48.983Z",
+      "averageOrderSize": 5,
+      "turnoverRate": 9.090909090909092,
+      "orderActivityScore": 45,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-11",
+    "name": "Organic Apples",
+    "category": "fruits",
+    "price": 3.25,
+    "qualityScore": 65,
+    "qualityLevel": "fair",
+    "description": "Crisp, sweet organic apples from local orchards.",
+    "healthBenefits": [
+      "High in fiber (pectin) for digestive health",
+      "Provides vitamin C and antioxidants",
+      "May support heart health"
+    ],
+    "bestUses": [
+      "Snacking and lunchboxes",
+      "Baking pies and crisps",
+      "Salads and applesauce"
+    ],
+    "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Apple Valley Orchard",
+    "harvestDate": "2025-07-12",
+    "expiryDate": "2025-09-07",
+    "qualityAssessmentDate": "2025-09-03T19:01:22.051Z",
+    "stock": 10,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T19:01:22.051Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 5,
+      "lastOrderDate": "2025-08-23T16:00:34.585Z",
+      "averageOrderSize": 5,
+      "turnoverRate": 6.097560975609756,
+      "orderActivityScore": 35,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-12",
+    "name": "Fresh Bananas",
+    "category": "fruits",
+    "price": 1.99,
+    "qualityScore": 61,
+    "qualityLevel": "fair",
+    "description": "Sweet, ripe bananas perfect for smoothies or snacking.",
+    "healthBenefits": [
+      "Excellent source of potassium",
+      "Provides quick-release carbohydrates for energy",
+      "Contains vitamin B6 and fiber"
+    ],
+    "bestUses": [
+      "Smoothies and shakes",
+      "Oatmeal and pancakes",
+      "Baking (banana bread) and snacking"
+    ],
+    "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Tropical Fruits Co.",
+    "harvestDate": "2025-07-06",
+    "expiryDate": "2025-08-25",
+    "qualityAssessmentDate": "2025-08-23T16:02:38.682Z",
+    "stock": 93,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-08-23T16:02:38.682Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 3,
+      "lastOrderDate": "2025-08-23T16:02:38.682Z",
+      "averageOrderSize": 3,
+      "turnoverRate": 3.125,
+      "orderActivityScore": 25,
+      "stockHealthScore": 100
+    }
+  },
+  {
+    "id": "product-13",
+    "name": "Organic Spinach",
+    "category": "vegetables",
+    "price": 2.75,
+    "qualityScore": 32,
+    "qualityLevel": "poor",
+    "description": "Fresh, organic spinach packed with nutrients.",
+    "healthBenefits": [
+      "Rich in iron, folate, and vitamin K",
+      "High in lutein and zeaxanthin for eye health",
+      "Supports healthy blood pressure"
+    ],
+    "bestUses": [
+      "Salads and sautés",
+      "Smoothies",
+      "Omelets, pastas, and stews"
+    ],
+    "image": "https://images.unsplash.com/photo-1576045057995-568f588f82fb?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Green Leaf Farm",
+    "harvestDate": "2025-06-29",
+    "expiryDate": "2025-08-29",
+    "qualityAssessmentDate": "2025-08-23T16:04:36.113Z",
+    "stock": 45,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-08-23T16:04:36.113Z",
+    "inventoryMetrics": {
+      "totalOrders": 1,
+      "totalQuantityOrdered": 4,
+      "lastOrderDate": "2025-08-23T16:04:36.113Z",
+      "averageOrderSize": 4,
+      "turnoverRate": 8.16326530612245,
+      "orderActivityScore": 30,
+      "stockHealthScore": 90
+    }
+  },
+  {
+    "id": "product-14",
+    "name": "Fresh Broccoli",
+    "category": "vegetables",
+    "price": 3.5,
+    "qualityScore": 71,
+    "qualityLevel": "good",
+    "description": "Crisp, fresh broccoli perfect for steaming or stir-frying.",
+    "healthBenefits": [
+      "High in vitamin C and K",
+      "Contains sulforaphane, a beneficial phytonutrient",
+      "Supports immune and bone health"
+    ],
+    "bestUses": [
+      "Steaming and stir-fries",
+      "Roasting with garlic",
+      "Added to salads and grain bowls"
+    ],
+    "image": "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Veggie Valley",
+    "harvestDate": "2025-07-27",
+    "expiryDate": "2025-08-09",
+    "qualityAssessmentDate": "2025-07-02",
+    "stock": 45,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T05:42:53.984Z"
+  },
+  {
+    "id": "product-15",
+    "name": "Organic Blueberries",
+    "category": "fruits",
+    "price": 5.99,
+    "qualityScore": 72,
+    "qualityLevel": "good",
+    "description": "Sweet, antioxidant-rich blueberries from local farms.",
+    "healthBenefits": [
+      "Packed with anthocyanin antioxidants",
+      "Supports brain and heart health",
+      "Good source of vitamin C and fiber"
+    ],
+    "bestUses": [
+      "Yogurt bowls and parfaits",
+      "Smoothies and baking",
+      "Fresh salads and sauces"
+    ],
+    "image": "https://images.unsplash.com/photo-1498557850523-fd3d118b962e?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Berry Best Farm",
+    "harvestDate": "2025-06-28",
+    "expiryDate": "2025-10-08",
+    "qualityAssessmentDate": "2025-09-03T17:20:54.608Z",
+    "stock": 28,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T18:38:16.723Z"
+  },
+  {
+    "id": "product-16",
+    "name": "Fresh Garlic",
+    "category": "vegetables",
+    "price": 1.99,
+    "qualityScore": 65,
+    "qualityLevel": "fair",
+    "description": "Aromatic fresh garlic for all your cooking needs.",
+    "healthBenefits": [
+      "Contains allicin which may support heart health",
+      "Natural antimicrobial properties",
+      "May help maintain healthy cholesterol levels"
+    ],
+    "bestUses": [
+      "Sautés and stir-fries",
+      "Marinades and dressings",
+      "Roasting whole cloves and sauces"
+    ],
+    "image": "/images/products/product-1753599586184-535382011.webp",
+    "farmer": "Garlic Grove",
+    "harvestDate": "2025-07-02",
+    "expiryDate": "2025-09-08",
+    "qualityAssessmentDate": "2025-09-03T19:36:05.329Z",
+    "stock": 60,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-09-03T19:36:05.329Z"
+  },
+  {
+    "id": "product-17",
+    "name": "Organic Onions",
+    "category": "vegetables",
+    "price": 2.25,
+    "qualityScore": 77,
+    "qualityLevel": "good",
+    "description": "Sweet, organic onions perfect for cooking.",
+    "healthBenefits": [
+      "Source of antioxidants like quercetin",
+      "Prebiotic fiber supports gut microbiome",
+      "May support cardiovascular health"
+    ],
+    "bestUses": [
+      "Soup and stew bases",
+      "Caramelized toppings",
+      "Salsas and salads"
+    ],
+    "image": "/images/products/product-1753599757583-3509609.jpg",
+    "farmer": "Onion Valley Farm",
+    "harvestDate": "2025-07-17",
+    "expiryDate": "2025-08-22",
+    "qualityAssessmentDate": "2025-07-25",
+    "stock": 56,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:02:37.585Z"
+  },
+  {
+    "id": "product-18",
+    "name": "Fresh Potatoes",
+    "category": "vegetables",
+    "price": 2.99,
+    "qualityScore": 97,
+    "qualityLevel": "excellent",
+    "description": "Fresh, local potatoes perfect for any dish.",
+    "healthBenefits": [
+      "Good source of potassium and vitamin C",
+      "Fiber-rich when eaten with the skin",
+      "Provides complex carbohydrates for energy"
+    ],
+    "bestUses": [
+      "Roasting and mashing",
+      "Fries and wedges",
+      "Soups, curries, and stews"
+    ],
+    "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Spud Farm",
+    "harvestDate": "2025-06-28",
+    "expiryDate": "2025-08-30",
+    "qualityAssessmentDate": "2025-07-08",
+    "stock": 16,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T05:42:53.984Z"
+  },
+  {
+    "id": "product-19",
+    "name": "Organic Cucumbers",
+    "category": "vegetables",
+    "price": 2.75,
+    "qualityScore": 39,
+    "qualityLevel": "poor",
+    "description": "Crisp, refreshing cucumbers perfect for salads.",
+    "healthBenefits": [
+      "Very hydrating due to high water content",
+      "Low in calories and refreshing",
+      "Contains vitamin K"
+    ],
+    "bestUses": [
+      "Salads and sandwiches",
+      "Pickling",
+      "Infused water and raita"
+    ],
+    "image": "https://images.unsplash.com/photo-1449300079323-02e209d9d3a6?w=400&h=300&fit=crop&crop=center",
+    "farmer": "Cucumber Corner",
+    "harvestDate": "2025-07-24",
+    "expiryDate": "2025-08-26",
+    "qualityAssessmentDate": "2025-07-20",
+    "stock": 33,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T05:42:53.984Z"
+  },
+  {
+    "id": "product-20",
+    "name": "Fresh Bell Peppers",
+    "category": "vegetables",
+    "price": 3.2,
+    "qualityScore": 59,
+    "qualityLevel": "fair",
+    "description": "Colorful bell peppers perfect for cooking or raw consumption.",
+    "healthBenefits": [
+      "Excellent source of vitamin C and A",
+      "Antioxidants that support immune health",
+      "Low calorie and fiber-rich"
+    ],
+    "bestUses": [
+      "Stir-fries and fajitas",
+      "Roasting and grilling",
+      "Stuffed peppers and salads"
+    ],
+    "image": "/images/products/product-1753599674870-198188001.webp",
+    "farmer": "Pepper Patch",
+    "harvestDate": "2025-06-29",
+    "expiryDate": "2025-08-08",
+    "qualityAssessmentDate": "2025-07-08",
+    "stock": 71,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:01:14.872Z"
+  },
+  {
+    "id": "product-21",
+    "name": "Organic Zucchini",
+    "category": "vegetables",
+    "price": 2.5,
+    "qualityScore": 50,
+    "qualityLevel": "fair",
+    "description": "Fresh zucchini perfect for grilling or baking.",
+    "healthBenefits": [
+      "Low in calories and a good source of vitamin C",
+      "Contains potassium and antioxidants",
+      "Hydrating and fiber-friendly"
+    ],
+    "bestUses": [
+      "Grilling and sautéing",
+      "Zoodles (zucchini noodles)",
+      "Baking breads and fritters"
+    ],
+    "image": "/images/products/product-1753599799166-782788155.jpg",
+    "farmer": "Squash Farm",
+    "harvestDate": "2025-07-23",
+    "expiryDate": "2025-08-13",
+    "qualityAssessmentDate": "2025-07-17",
+    "stock": 77,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:03:19.168Z"
+  },
+  {
+    "id": "product-22",
+    "name": "Fresh Corn",
+    "category": "vegetables",
+    "price": 3.75,
+    "qualityScore": 14,
+    "qualityLevel": "poor",
+    "description": "Sweet, fresh corn on the cob from local fields.",
+    "healthBenefits": [
+      "Provides fiber for digestive health",
+      "Source of B vitamins and minerals",
+      "Contains lutein and zeaxanthin for eye health"
+    ],
+    "bestUses": [
+      "Grilling and boiling",
+      "Salads and salsas",
+      "Soups and chowders"
+    ],
+    "image": "/images/products/product-1753599837150-46574564.webp",
+    "farmer": "Corn Field Farm",
+    "harvestDate": "2025-07-22",
+    "expiryDate": "2025-08-25",
+    "qualityAssessmentDate": "2025-07-19",
+    "stock": 32,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:03:57.150Z"
+  },
+  {
+    "id": "product-23",
+    "name": "Organic Peaches",
+    "category": "fruits",
+    "price": 4.25,
+    "qualityScore": 55,
+    "qualityLevel": "fair",
+    "description": "Juicy, sweet peaches from local orchards.",
+    "healthBenefits": [
+      "Source of vitamin C and A",
+      "Hydrating and fiber-rich",
+      "Antioxidants support skin health"
+    ],
+    "bestUses": [
+      "Snacking and smoothies",
+      "Desserts, cobblers, and pies",
+      "Grilling and salads"
+    ],
+    "image": "/images/products/product-1753599868730-486732930.webp",
+    "farmer": "Peach Orchard",
+    "harvestDate": "2025-07-09",
+    "expiryDate": "2025-08-19",
+    "qualityAssessmentDate": "2025-07-27",
+    "stock": 74,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:04:28.730Z"
+  },
+  {
+    "id": "product-24",
+    "name": "Fresh Grapes",
+    "category": "fruits",
+    "price": 4.99,
+    "qualityScore": 17,
+    "qualityLevel": "poor",
+    "description": "Sweet, seedless grapes perfect for snacking.",
+    "healthBenefits": [
+      "Contains resveratrol and other antioxidants",
+      "Hydrating and vitamin K source",
+      "May support heart health"
+    ],
+    "bestUses": [
+      "Fresh snacking and lunchboxes",
+      "Fruit salads and cheese boards",
+      "Frozen treats and juices"
+    ],
+    "image": "/images/products/product-1753599899013-893126914.jpg",
+    "farmer": "Vineyard Valley",
+    "harvestDate": "2025-07-20",
+    "expiryDate": "2025-08-04",
+    "qualityAssessmentDate": "2025-07-16",
+    "stock": 16,
+    "location": "Local Market",
+    "certifications": [
+      "Organic",
+      "Local"
+    ],
+    "lastUpdated": "2025-07-27T07:04:59.014Z"
+  }
+]
