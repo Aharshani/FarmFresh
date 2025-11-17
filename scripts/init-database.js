@@ -9,13 +9,13 @@ const { initializeDatabase, testConnection, closePool } = require('../src/config
 
 async function main() {
     try {
-        console.log('🚀 Initializing FarmFresh database...\n');
+        console.log(' Initializing FarmFresh database...\n');
         
         // Initialize database and create tables
         await initializeDatabase();
         
         // Test connection
-        console.log('\n🔍 Testing database connection...');
+        console.log('\n Testing database connection...');
         const connected = await testConnection();
         
         if (connected) {
