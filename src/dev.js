@@ -104,23 +104,23 @@ class FarmFreshApp {
      */
     logServerInfo() {
         // Display application header with emojis for visual appeal
-        console.log('\n FarmFresh MVC Application');
+        console.log('\n🚀 FarmFresh MVC Application');
         console.log('==============================');
-        console.log(` URL: http://localhost:${this.PORT}`); // Show server URL
-        console.log(` Local farmer's market platform`); // Application description
-        console.log(` Unified cart system`); // Key feature
-        console.log(` Supporting local farmers`); // Mission statement
+        console.log(`📍 URL: http://localhost:${this.PORT}`); // Show server URL
+        console.log(`📱 Local farmer's market platform`); // Application description
+        console.log(`🛒 Unified cart system`); // Key feature
+        console.log(`🌾 Supporting local farmers`); // Mission statement
         
         // List all available HTML pages
-        console.log('\nAvailable Pages:');
+        console.log('\n📋 Available Pages:');
         this.listAvailablePages(); // Call method to list pages
         
         // List all API endpoints
-        console.log('\n API Endpoints:');
+        console.log('\n🔧 API Endpoints:');
         this.listApiEndpoints(); // Call method to list endpoints
         
         // Display MVC architecture information
-        console.log('\n MVC Architecture:');
+        console.log('\n🎯 MVC Architecture:');
         console.log(`   • Models: Product, Cart, Order`); // Data models
         console.log(`   • Controllers: CartController, ProductController, CheckoutController`); // Business logic
         console.log(`   • Services: StorageService, ValidationService`); // Utility services

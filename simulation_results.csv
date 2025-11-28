@@ -1,0 +1,16 @@
+product_id,category,base_price,strategy,revenue
+product-1,fruits,4.99,S1_CurrentDynamic,3.24
+product-1,fruits,4.99,S2_StaticDiscount,3.74
+product-1,fruits,4.99,S3_FreshnessDecay,3.99
+product-5,vegetables,2.49,S1_CurrentDynamic,1.64
+product-5,vegetables,2.49,S2_StaticDiscount,2.49
+product-5,vegetables,2.49,S3_FreshnessDecay,2.12
+product-6,dairy,8.99,S1_CurrentDynamic,7.46
+product-6,dairy,8.99,S2_StaticDiscount,8.99
+product-6,dairy,8.99,S3_FreshnessDecay,8.99
+product-8,vegetables,2.5,S1_CurrentDynamic,2.5
+product-8,vegetables,2.5,S2_StaticDiscount,2.5
+product-8,vegetables,2.5,S3_FreshnessDecay,2.5
+product-9,vegetables,4.5,S1_CurrentDynamic,3.29
+product-9,vegetables,4.5,S2_StaticDiscount,4.5
+product-9,vegetables,4.5,S3_FreshnessDecay,4.5

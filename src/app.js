@@ -67,7 +67,6 @@ class FarmFreshApp {
      * Setup routes
      */
     setupRoutes() {
-        this.app.get('/favicon.ico', (req, res) => res.status(204).end());
         this.app.use('/', pageRoutes);
         this.app.use('/api', apiRoutes);
         this.app.use(notFound);
@@ -95,7 +94,7 @@ class FarmFreshApp {
         console.log(` Unified cart system`);
         console.log(` Supporting local farmers`);
         
-        console.log('\n Available Pages:');
+        console.log('\ Available Pages:');
         this.listAvailablePages();
         
         console.log('\n API Endpoints:');

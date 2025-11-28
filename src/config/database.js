@@ -160,7 +160,7 @@ async function initializeDatabase() {
                     ADD COLUMN role ENUM('user', 'admin') DEFAULT 'user' AFTER postcode,
                     ADD INDEX idx_role (role)
                 `);
-                console.log('Role column added to users table');
+                console.log(' Role column added to users table');
             }
         } catch (error) {
             // Column might already exist, ignore error
@@ -208,7 +208,7 @@ async function initializeDatabase() {
                 ALTER TABLE products 
                 MODIFY COLUMN qualityLevel ENUM('excellent', 'good', 'fair', 'poor', 'critical') DEFAULT 'fair'
             `);
-            console.log('Updated qualityLevel ENUM to include "critical"');
+            console.log(' Updated qualityLevel ENUM to include "critical"');
         } catch (error) {
             if (!error.message.includes('Duplicate column name') && !error.message.includes('doesn\'t exist')) {
                 console.warn(' Could not update qualityLevel ENUM:', error.message);

@@ -3,14 +3,11 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const { spawn } = require('child_process');
 const ProductMySQL = require('../models/ProductMySQL');
 const CartMySQL = require('../models/CartMySQL');
 const OrderMySQL = require('../models/OrderMySQL');
 
-const { execFile } = require('child_process');
-// Update this to point to your Python VENV python.exe
-const PYTHON_PATH = 'D:\\my_model_project\\.venv\\Scripts\\python.exe';
-const SCRIPT_PATH = 'D:\\my_model_project\\predict.py';
 // Initialize product model (MySQL)
 const productModel = new ProductMySQL();
 
@@ -52,6 +49,104 @@ const upload = multer({
         }
     }
 });
+
+ 
+//  AI ANALYSIS ROUTE (Python Integration)
+ 
+
+/**
+ * POST /api/analyze-quality-python
+ * Analyze product quality using Python script and .h5 model
+ */
+
+
+router.post('/analyze-quality-python', upload.single('image'), (req, res) => {
+    if (!req.file) {
+        return res.status(400).json({ success: false, error: 'No image uploaded' });
+    }
+
+    const imagePath = req.file.path;
+    
+    // 1. Define the absolute path to the directory containing the script
+    const pythonScriptDir = path.join(__dirname, '../../ml_backend');
+
+    // 2. Define the path to the Python script
+    const pythonScriptPath = path.join(pythonScriptDir, 'predict.py');
+
+    console.log(`Spawning  process for: ${imagePath}`);
+
+    // Smart Command: Use 'py' on Windows, 'python3' on Mac/Linux
+    const pythonCommand = process.platform === "win32" ? "py" : "python3";
+
+    // 3. Spawn the Python process
+    const pythonProcess = spawn(pythonCommand, [pythonScriptPath, imagePath]);
+    
+    let dataString = '';
+    let errorString = '';
+
+    // Collect data from script
+    pythonProcess.stdout.on('data', (data) => {
+        dataString += data.toString();
+    });
+
+
+    // Collect errors (filtering out common TensorFlow warnings)
+    pythonProcess.stderr.on('data', (data) => {
+        const msg = data.toString();
+        if(!msg.includes('cpu_feature_guard') && !msg.includes('oneDNN')) {
+            errorString += msg;
+        }
+    });
+
+    // Handle script completion
+    pythonProcess.on('close', (code) => {
+        console.log(`process closed with code ${code}`);
+        
+        // NOTE: fs.unlink (file deletion) REMOVED so the image stays on the server!
+        
+        if (code !== 0) {
+            console.error('Python Error:', errorString);
+            // Prevent crashing if headers sent
+            if (!res.headersSent) {
+                return res.status(500).json({ 
+                    success: false, 
+                    error: 'AI analysis failed', 
+                    details: errorString 
+                });
+            }
+            return;
+        }
+
+        try {
+            // Parse the JSON printed by Python
+            const lines = dataString.trim().split('\n');
+            const jsonLine = lines.find(line => line.trim().startsWith('{') && line.trim().endsWith('}'));
+            
+            if (!jsonLine) {
+                throw new Error('No valid JSON output from Python script');
+            }
+
+            const result = JSON.parse(jsonLine);
+            
+            // Add the image URL to the result so frontend can display it
+            result.imageUrl = `/images/products/${req.file.filename}`;
+            
+            res.json(result);
+
+        } catch (error) {
+            console.error('Parsing Error:', error, 'Raw output:', dataString);
+            if (!res.headersSent) {
+                res.status(500).json({ 
+                    success: false, 
+                    error: 'Failed to parse AI results' 
+                });
+            }
+        }
+    });
+});
+
+
+//  STANDARD PRODUCT ROUTES
 
 /**
  * POST /api/products - Create a new product
@@ -302,7 +397,7 @@ router.get('/quality/recommendations', async (req, res) => {
 });
 
 /**
- * POST /api/quality/assess - Assess product quality
+ * POST /api/quality/assess - Assess product quality (Manual update)
  */
 router.post('/quality/assess', async (req, res) => {
     try {
@@ -338,182 +433,35 @@ router.post('/quality/assess', async (req, res) => {
 });
 
 /**
- * GET /api/cart - Get cart (placeholder) - DEPRECATED, use /api/cart/:userId instead
- */
-router.get('/cart', (req, res) => {
-    res.json({ items: [], total: 0 });
-});
-
-/**
- * POST /api/orders - Create a new order
- */
-router.post('/orders', async (req, res) => {
-    try {
-        const orderData = req.body;
-
-        // Validate required fields
-        if (!orderData.userId) {
-            return res.status(400).json({
-                success: false,
-                message: 'User ID is required'
-            });
-        }
-
-        if (!orderData.items || orderData.items.length === 0) {
-            return res.status(400).json({
-                success: false,
-                message: 'Order must contain at least one item'
-            });
-        }
-
-        // Create order (this will also decrement stock)
-        const result = await orderModel.create(orderData);
-
-        if (!result || !result.success) {
-            return res.status(500).json({
-                success: false,
-                message: result?.message || 'Failed to create order',
-                error: result?.error || 'Unknown error'
-            });
-        }
-
-        res.status(201).json(result);
-    } catch (error) {
-        console.error('Error creating order:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to create order',
-            error: error.message || 'Unknown error'
-        });
-    }
-});
-
-/**
- * GET /api/orders/:orderId - Get order by ID
- */
-router.get('/orders/:orderId', async (req, res) => {
-    try {
-        const { orderId } = req.params;
-        const order = await orderModel.findByOrderId(orderId);
-
-        if (!order) {
-            return res.status(404).json({
-                success: false,
-                message: 'Order not found'
-            });
-        }
-
-        res.json({
-            success: true,
-            order: order
-        });
-    } catch (error) {
-        console.error('Error getting order:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to get order',
-            error: error.message
-        });
-    }
-});
-
-/**
- * GET /api/orders/user/:userId - Get orders by user ID
- */
-router.get('/orders/user/:userId', async (req, res) => {
-    try {
-        const { userId } = req.params;
-        const orders = await orderModel.getOrdersByUserId(userId);
-
-        res.json({
-            success: true,
-            orders: orders
-        });
-    } catch (error) {
-        console.error('Error getting user orders:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Failed to get user orders',
-            error: error.message
-        });
-    }
-});
-
-/**
- * POST /api/upload-image - Upload product image AND get AI analysis
- */
-/**
- * POST /api/upload-image - Upload product image AND get AI analysis
+ * POST /api/upload-image - Upload product image (Standard upload)
  */
 router.post('/upload-image', upload.single('image'), async (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ error: 'No image file provided' });
         }
-
-        const productId = req.body.productId;
-        // Generate the local file path for Python to read
-        const localImagePath = path.join(__dirname, '../../public/images/products', req.file.filename);
-        const publicImageUrl = `/images/products/${req.file.filename}`;
-
-        // 1. Call Python Script
-        console.log('Running Python analysis on:', localImagePath);
         
-        execFile(PYTHON_PATH, [SCRIPT_PATH, localImagePath], async (error, stdout, stderr) => {
-            let aiResult = null;
-            
-            // Try to parse Python output
-            try {
-                if (stdout) {
-                    // Find the last line which should be our JSON
-                    const lines = stdout.trim().split('\n');
-                    const jsonLine = lines[lines.length - 1];
-                    aiResult = JSON.parse(jsonLine);
-                }
-            } catch (e) {
-                console.error("Failed to parse Python output:", stdout);
-            }
-
-            // 2. Update Product in Database
-            let qualityScore = 75; // Default
-            let qualityLevel = 'fair';
-
-            if (aiResult && aiResult.success) {
-                console.log("AI Success:", aiResult);
-                const confidence = aiResult.prediction.score_percent;
-                const label = aiResult.prediction.class;
-
-                // Convert model output to 0-100 score
-                if (label === 'good_products') qualityScore = Math.max(85, confidence);
-                if (label === 'bad_products') qualityScore = 60; // Fixed score for bad
-                if (label === 'rotten_products') qualityScore = Math.min(15, 100 - confidence);
-                
-                // Set level string
-                if (qualityScore >= 85) qualityLevel = 'excellent';
-                else if (qualityScore >= 60) qualityLevel = 'fair';
-                else if (qualityScore >= 40) qualityLevel = 'poor';
-                else qualityLevel = 'critical';
-            }
-
-            // Update the database
-            await productModel.update(productId, { 
-                image: publicImageUrl,
-                qualityScore: Math.round(qualityScore),
-                qualityLevel: qualityLevel,
-                qualityAssessmentDate: new Date()
-            });
-
-            // 3. Return Result to Frontend
-            res.json({
-                success: true,
-                imageUrl: publicImageUrl,
-                filename: req.file.filename,
-                aiAnalysis: aiResult ? aiResult.prediction : null,
-                newQualityScore: Math.round(qualityScore),
-                newQualityLevel: qualityLevel
-            });
+        const productId = req.body.productId;
+        if (!productId) {
+            return res.status(400).json({ error: 'Product ID is required' });
+        }
+        
+        // Generate the image URL
+        const imageUrl = `/images/products/${req.file.filename}`;
+        
+        // Update the product with the new image URL
+        const result = await productModel.update(productId, { image: imageUrl });
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json({
+            success: true,
+            imageUrl: imageUrl,
+            filename: req.file.filename,
+            product: result.product
         });
-
+        
     } catch (error) {
         console.error('Error uploading image:', error);
         res.status(500).json({ error: 'Failed to upload image' });
@@ -694,4 +642,99 @@ router.get('/cart/:userId/statistics', async (req, res) => {
     }
 });
 
-module.exports = router; 
+/**
+ * POST /api/orders - Create a new order
+ */
+router.post('/orders', async (req, res) => {
+    try {
+        const orderData = req.body;
+
+        // Validate required fields
+        if (!orderData.userId) {
+            return res.status(400).json({
+                success: false,
+                message: 'User ID is required'
+            });
+        }
+
+        if (!orderData.items || orderData.items.length === 0) {
+            return res.status(400).json({
+                success: false,
+                message: 'Order must contain at least one item'
+            });
+        }
+
+        // Create order (this will also decrement stock)
+        const result = await orderModel.create(orderData);
+
+        if (!result || !result.success) {
+            return res.status(500).json({
+                success: false,
+                message: result?.message || 'Failed to create order',
+                error: result?.error || 'Unknown error'
+            });
+        }
+
+        res.status(201).json(result);
+    } catch (error) {
+        console.error('Error creating order:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to create order',
+            error: error.message || 'Unknown error'
+        });
+    }
+});
+
+/**
+ * GET /api/orders/:orderId - Get order by ID
+ */
+router.get('/orders/:orderId', async (req, res) => {
+    try {
+        const { orderId } = req.params;
+        const order = await orderModel.findByOrderId(orderId);
+
+        if (!order) {
+            return res.status(404).json({
+                success: false,
+                message: 'Order not found'
+            });
+        }
+
+        res.json({
+            success: true,
+            order: order
+        });
+    } catch (error) {
+        console.error('Error getting order:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to get order',
+            error: error.message
+        });
+    }
+});
+
+/**
+ * GET /api/orders/user/:userId - Get orders by user ID
+ */
+router.get('/orders/user/:userId', async (req, res) => {
+    try {
+        const { userId } = req.params;
+        const orders = await orderModel.getOrdersByUserId(userId);
+
+        res.json({
+            success: true,
+            orders: orders
+        });
+    } catch (error) {
+        console.error('Error getting user orders:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Failed to get user orders',
+            error: error.message
+        });
+    }
+});
+
+module.exports = router;
