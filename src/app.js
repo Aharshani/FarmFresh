@@ -67,6 +67,7 @@ class FarmFreshApp {
      * Setup routes
      */
     setupRoutes() {
+        this.app.get('/favicon.ico', (req, res) => res.status(204).end());
         this.app.use('/', pageRoutes);
         this.app.use('/api', apiRoutes);
         this.app.use(notFound);

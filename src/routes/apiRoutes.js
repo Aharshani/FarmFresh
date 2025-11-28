@@ -7,6 +7,10 @@ const ProductMySQL = require('../models/ProductMySQL');
 const CartMySQL = require('../models/CartMySQL');
 const OrderMySQL = require('../models/OrderMySQL');
 
+const { execFile } = require('child_process');
+// Update this to point to your Python VENV python.exe
+const PYTHON_PATH = 'D:\\my_model_project\\.venv\\Scripts\\python.exe';
+const SCRIPT_PATH = 'D:\\my_model_project\\predict.py';
 // Initialize product model (MySQL)
 const productModel = new ProductMySQL();
 
@@ -436,35 +440,80 @@ router.get('/orders/user/:userId', async (req, res) => {
 });
 
 /**
- * POST /api/upload-image - Upload product image
+ * POST /api/upload-image - Upload product image AND get AI analysis
+ */
+/**
+ * POST /api/upload-image - Upload product image AND get AI analysis
  */
 router.post('/upload-image', upload.single('image'), async (req, res) => {
     try {
         if (!req.file) {
             return res.status(400).json({ error: 'No image file provided' });
         }
-        
+
         const productId = req.body.productId;
-        if (!productId) {
-            return res.status(400).json({ error: 'Product ID is required' });
-        }
+        // Generate the local file path for Python to read
+        const localImagePath = path.join(__dirname, '../../public/images/products', req.file.filename);
+        const publicImageUrl = `/images/products/${req.file.filename}`;
+
+        // 1. Call Python Script
+        console.log('Running Python analysis on:', localImagePath);
         
-        // Generate the image URL
-        const imageUrl = `/images/products/${req.file.filename}`;
-        
-        // Update the product with the new image URL
-        const result = await productModel.update(productId, { image: imageUrl });
-        if (!result.success) {
-            return res.status(404).json(result);
-        }
-        
-        res.json({
-            success: true,
-            imageUrl: imageUrl,
-            filename: req.file.filename,
-            product: result.product
+        execFile(PYTHON_PATH, [SCRIPT_PATH, localImagePath], async (error, stdout, stderr) => {
+            let aiResult = null;
+            
+            // Try to parse Python output
+            try {
+                if (stdout) {
+                    // Find the last line which should be our JSON
+                    const lines = stdout.trim().split('\n');
+                    const jsonLine = lines[lines.length - 1];
+                    aiResult = JSON.parse(jsonLine);
+                }
+            } catch (e) {
+                console.error("Failed to parse Python output:", stdout);
+            }
+
+            // 2. Update Product in Database
+            let qualityScore = 75; // Default
+            let qualityLevel = 'fair';
+
+            if (aiResult && aiResult.success) {
+                console.log("AI Success:", aiResult);
+                const confidence = aiResult.prediction.score_percent;
+                const label = aiResult.prediction.class;
+
+                // Convert model output to 0-100 score
+                if (label === 'good_products') qualityScore = Math.max(85, confidence);
+                if (label === 'bad_products') qualityScore = 60; // Fixed score for bad
+                if (label === 'rotten_products') qualityScore = Math.min(15, 100 - confidence);
+                
+                // Set level string
+                if (qualityScore >= 85) qualityLevel = 'excellent';
+                else if (qualityScore >= 60) qualityLevel = 'fair';
+                else if (qualityScore >= 40) qualityLevel = 'poor';
+                else qualityLevel = 'critical';
+            }
+
+            // Update the database
+            await productModel.update(productId, { 
+                image: publicImageUrl,
+                qualityScore: Math.round(qualityScore),
+                qualityLevel: qualityLevel,
+                qualityAssessmentDate: new Date()
+            });
+
+            // 3. Return Result to Frontend
+            res.json({
+                success: true,
+                imageUrl: publicImageUrl,
+                filename: req.file.filename,
+                aiAnalysis: aiResult ? aiResult.prediction : null,
+                newQualityScore: Math.round(qualityScore),
+                newQualityLevel: qualityLevel
+            });
         });
-        
+
     } catch (error) {
         console.error('Error uploading image:', error);
         res.status(500).json({ error: 'Failed to upload image' });
