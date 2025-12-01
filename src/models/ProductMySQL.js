@@ -195,7 +195,7 @@ class ProductMySQL {
      * Update product
      */
     async update(id, updates) {
-        console.log(`🔄 Model: Updating product ${id} with:`, updates);
+        console.log(` Model: Updating product ${id} with:`, updates);
         try {
             const product = await this.findByProductId(id);
             if (!product) {

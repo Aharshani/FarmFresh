@@ -164,7 +164,7 @@ def predict_image(image_path):
         # Good = 100 points, Bad = 50 points, Rotten = 0 points
         # Formula: (Good * 100) + (Bad * 50) + (Rotten * 0)
         
-        raw_score = (prob_good * 100) + (prob_bad * 50)
+        raw_score = (prob_good * 100) + (prob_bad * 50) + (prob_rotten * 0)
         quality_score = round(raw_score)
 
         # 7. Determine Class Label based on the *averaged* result
@@ -172,10 +172,12 @@ def predict_image(image_path):
         predicted_class = CLASS_NAMES[max_index]
 
         # Optional: Override label if score contradicts class (Safety net)
-        if quality_score > 75 and predicted_class != 'good_products':
+        if quality_score > 70:
             predicted_class = 'good_products'
-        elif quality_score < 30 and predicted_class != 'rotten_products':
+        elif quality_score < 30:
             predicted_class = 'rotten_products'
+        else:
+            predicted_class = 'bad_products'
 
         result = {
             "success": True,
