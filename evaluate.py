@@ -7,7 +7,7 @@ from sklearn.metrics import classification_report, confusion_matrix, precision_r
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
-# --- CONFIGURATION ---
+# CONFIGURATION 
 MODEL_PATH = 'my_image_classifier.h5'
 VAL_DIR = 'data/validation'
 IMG_SIZE = (160, 160)
@@ -62,7 +62,7 @@ def evaluate_model():
         labels=range(len(class_labels)) 
     ))
 
-    # --- METRIC 2: CONFUSION MATRIX ---
+    # METRIC 2: CONFUSION MATRIX 
     print("\nGenerating Confusion Matrix...")
     cm = confusion_matrix(true_classes, predicted_classes)
     
@@ -74,7 +74,7 @@ def evaluate_model():
     plt.tight_layout()
     plt.show()
 
-    # --- METRIC 3: PRECISION-RECALL CURVE ---
+    #  METRIC 3: PRECISION-RECALL CURVE 
     print("\nGenerating Precision-Recall Curves...")
     
     n_classes = len(class_labels)

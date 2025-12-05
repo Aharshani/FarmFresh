@@ -12,7 +12,7 @@ from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 import sys
 import json
 
-# --- CONFIGURATION ---
+# CONFIGURATION 
 MODEL_PATH = os.path.join(os.path.dirname(__file__), 'my_image_classifier.h5')
 IMG_SIZE = (160, 160)
 

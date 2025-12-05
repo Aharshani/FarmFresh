@@ -145,7 +145,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 
-# --- CONFIGURATION ---
+# CONFIGURATION 
 IMG_SIZE = (160, 160)
 BATCH_SIZE = 32
 EPOCHS = 10  # Increased slightly for 3 classes
@@ -153,7 +153,7 @@ TRAIN_DIR = 'data/train'
 VAL_DIR = 'data/validation'
 MODEL_SAVE_PATH = 'my_image_classifier.h5'
 
-# --- 1. DATA GENERATORS ---
+# 1. DATA GENERATORS 
 train_datagen = ImageDataGenerator(
     preprocessing_function=preprocess_input,
     rotation_range=20,      # Slight rotation to help generalize + or - 20 degrees(data)
@@ -187,7 +187,7 @@ validation_generator = val_datagen.flow_from_directory(
 num_classes = train_generator.num_classes
 print(f" Detected {num_classes} classes: {list(train_generator.class_indices.keys())}")
 
-# --- 2. BUILD MODEL ---
+# 2. BUILD MODEL 
 base_model = MobileNetV2(
     input_shape=IMG_SIZE + (3,),
     include_top=False,
@@ -203,7 +203,7 @@ outputs = layers.Dense(num_classes, activation='softmax')(x)
 
 model = models.Model(inputs, outputs)
 
-# --- 3. TRAIN ---
+# 3. TRAIN 
 model.compile(
     optimizer=optimizers.Adam(learning_rate=0.001),
     loss='categorical_crossentropy',
@@ -217,6 +217,6 @@ history = model.fit(
     validation_data=validation_generator
 )
 
-# --- 4. SAVE ---
+# 4. SAVE 
 model.save(MODEL_SAVE_PATH)
 print("Model saved successfully!")  
